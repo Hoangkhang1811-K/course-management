@@ -1,6 +1,5 @@
 package dao;
 
-import com.sun.org.apache.bcel.internal.generic.ACONST_NULL;
 import model.User;
 import util.DBConnection;
 
