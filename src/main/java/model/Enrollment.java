@@ -8,6 +8,9 @@ public class Enrollment {
     private int courseId;
     private Timestamp enrolledAt;
     private String status;
+    // Thêm 2 field để hiển thị UI
+    private String courseTitle;
+    private String userFullName;
 
     public Enrollment() {
     }
@@ -66,6 +69,22 @@ public class Enrollment {
         this.status = status;
     }
 
+    public String getCourseTitle() {
+        return courseTitle;
+    }
+
+    public void setCourseTitle(String courseTitle) {
+        this.courseTitle = courseTitle;
+    }
+
+    public String getUserFullName() {
+        return userFullName;
+    }
+
+    public void setUserFullName(String userFullName) {
+        this.userFullName = userFullName;
+    }
+
     @Override
     public String toString() {
         return "Enrollment{" +
@@ -74,6 +93,8 @@ public class Enrollment {
                 ", courseId=" + courseId +
                 ", enrolledAt=" + enrolledAt +
                 ", status='" + status + '\'' +
+                ", courseTitle='" + courseTitle + '\'' +
+                ", userFullName='" + userFullName + '\'' +
                 '}';
     }
 }
