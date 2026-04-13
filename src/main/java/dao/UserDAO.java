@@ -13,7 +13,7 @@ import java.util.List;
 public class UserDAO {
     private static final String SELECT_BY_EMAIL = "select * from users where email = ?";
     private static final String SELECT_BY_ID = "select * from users where user_id = ?";
-    private static final String INSERT_USER = "insert into users (role_id, full_name, email, password_hash, phone, status) + values (?, ?, ?, ?, ?, ?)";
+    private static final String INSERT_USER = "insert into users (role_id, full_name, email, password_hash, phone, status) values (?, ?, ?, ?, ?, ?)";
     private static final String SELECT_ALL_STUDENT = "select * from users where role_id = 2 ORDER BY user_id DESC";
     private static final String SELECT_ALL_USERS = "select * from users ORDER BY user_id DESC";
 

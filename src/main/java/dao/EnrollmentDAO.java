@@ -8,6 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EnrollmentDAO {
+    private static final String SELECT_ALL =
+            "SELECT e.*, c.title AS course_title, u.full_name AS user_full_name " +
+                    "FROM enrollments e " +
+                    "JOIN courses c ON e.course_id = c.course_id " +
+                    "JOIN users u ON e.user_id = u.user_id " +
+                    "ORDER BY e.enrollment_id DESC";
 
     private static final String INSERT_ENROLLMENT =
             "INSERT INTO enrollments(user_id, course_id, status) VALUES (?, ?, ?)";
@@ -16,18 +22,20 @@ public class EnrollmentDAO {
             "SELECT 1 FROM enrollments WHERE user_id = ? AND course_id = ?";
 
     private static final String SELECT_BY_USER_ID =
-            "\"SELECT e.*, c.title AS course_title \" +\n" +
-                    "        \"FROM enrollments e \" +\n" +
-                    "        \"JOIN courses c ON e.course_id = c.course_id \" +\n" +
-                    "        \"WHERE e.user_id = ? \" +\n" +
-                    "        \"ORDER BY e.enrollment_id DESC\"";
+            "SELECT e.*, c.title AS course_title, u.full_name AS user_full_name " +
+                    "FROM enrollments e " +
+                    "JOIN courses c ON e.course_id = c.course_id " +
+                    "JOIN users u ON e.user_id = u.user_id " +
+                    "WHERE e.user_id = ? " +
+                    "ORDER BY e.enrollment_id DESC";
 
     private static final String SELECT_BY_COURSE_ID =
-            "\"SELECT e.*, u.full_name AS user_full_name \" +\n" +
-                    "        \"FROM enrollments e \" +\n" +
-                    "        \"JOIN users u ON e.user_id = u.user_id \" +\n" +
-                    "        \"WHERE e.course_id = ? \" +\n" +
-                    "        \"ORDER BY e.enrollment_id DESC\"";
+            "SELECT e.*, c.title AS course_title, u.full_name AS user_full_name " +
+                    "FROM enrollments e " +
+                    "JOIN courses c ON e.course_id = c.course_id " +
+                    "JOIN users u ON e.user_id = u.user_id " +
+                    "WHERE e.course_id = ? " +
+                    "ORDER BY e.enrollment_id DESC";
 
     private static final String SELECT_BY_ID =
             "SELECT * FROM enrollments WHERE enrollment_id = ?";
@@ -37,6 +45,24 @@ public class EnrollmentDAO {
 
     private static final String DELETE_ENROLLMENT =
             "DELETE FROM enrollments WHERE enrollment_id = ?";
+
+    public List<Enrollment> findAll() {
+        List<Enrollment> enrollmentList = new ArrayList<>();
+
+        try (
+                Connection conn = DBConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(SELECT_ALL);
+                ResultSet rs = ps.executeQuery()
+        ) {
+            while (rs.next()) {
+                enrollmentList.add(mapResultSetToEnrollment(rs));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return enrollmentList;
+    }
 
     // Kết quả đăng ký khóa học
     public boolean insertEnrollment(Enrollment enrollment) {
@@ -183,13 +209,13 @@ public class EnrollmentDAO {
         try {
             enrollment.setCourseTitle(rs.getString("course_title"));
         } catch (SQLException e) {
-            e.printStackTrace();
+            // Query khong join courses thi khong co cot nay.
         }
 
         try {
             enrollment.setUserFullName(rs.getString("user_full_name"));
         } catch (SQLException e) {
-            e.printStackTrace();
+            // Query khong join users thi khong co cot nay.
         }
 
         return enrollment;

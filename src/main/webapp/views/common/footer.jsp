@@ -1,16 +1,10 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Admin
-  Date: 4/11/2026
-  Time: 2:30 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<footer class="footer py-4">
+    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+        <div>Course Management</div>
+        <div>Học tập chủ động, quản lý rõ ràng.</div>
+    </div>
+</footer>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -192,15 +192,15 @@ public class CategoryServle extends HttpServlet {
 
     private String validateCategory(Category category) {
         if (category.getName() == null || category.getName().trim().isEmpty()) {
-            return "Ten danh muc khong duoc de trong.";
+            return "Tên danh mục không được để trống.";
         }
 
         if (category.getName().length() > 50) {
-            return "Ten danh muc khong duoc vuot qua 50 ky tu.";
+            return "Tên danh mục không được quá 50 ký tự.";
         }
 
         if (category.getDescription() != null && category.getDescription().length() > 500) {
-            return "Mo ta khong duoc vuot qua 500 ky tu.";
+            return "Mô tả không được vượt quá 500 ký tự";
         }
 
         return null;
