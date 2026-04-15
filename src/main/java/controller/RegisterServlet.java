@@ -73,16 +73,17 @@ public class RegisterServlet extends HttpServlet {
             return;
         }
 
-        User user = new User(STUDENT_ROLE_ID, fullName, email, password, phone, ACTIVE_STATUS);
+        User user = new User(STUDENT_ROLE_ID, fullName, email, password, normalizePhone(phone), ACTIVE_STATUS);
         boolean registered = authService.register(user);
 
         if (registered) {
-            request.setAttribute("successMsg", "Đăng ký tài khoản thành công. Vui lòng đăng nhập bằng email của bạn.");
-            clearFormValue(request);
-        } else {
-            request.setAttribute("error", "Không thể đăng ký tài khoản. Vui lòng thử lại.");
+            HttpSession session = request.getSession();
+            session.setAttribute("successMsg", "Đăng ký tài khoản thành công. Vui lòng đăng nhập bằng email của bạn.");
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
         }
 
+        request.setAttribute("error", "Không thể đăng ký tài khoản. Vui lòng kiểm tra kết nối cơ sở dữ liệu và thử lại.");
         forwardToRegister(request, response);
     }
 
@@ -114,7 +115,7 @@ public class RegisterServlet extends HttpServlet {
         }
 
         if (!phone.isEmpty() && !PHONE_PATTERN.matcher(phone).matches()) {
-            return "Số điện thoại không hợp lệ.";
+            return "Số điện thoại không hợp lệ. Vui lòng nhập từ 9 đến 15 ký tự số.";
         }
 
         if (password.isEmpty()) {
@@ -140,12 +141,6 @@ public class RegisterServlet extends HttpServlet {
         request.setAttribute("fullName", fullName);
         request.setAttribute("email", email);
         request.setAttribute("phone", phone);
-    }
-
-    private void clearFormValue(HttpServletRequest request) {
-        request.setAttribute("fullName", "");
-        request.setAttribute("email", "");
-        request.setAttribute("phone", "");
     }
 
     private void forwardToRegister(HttpServletRequest request, HttpServletResponse response)
@@ -175,6 +170,10 @@ public class RegisterServlet extends HttpServlet {
         } else {
             response.sendRedirect(request.getContextPath() + "/home");
         }
+    }
+
+    private String normalizePhone(String phone) {
+        return phone.isEmpty() ? null : phone;
     }
 
     private String trimToEmpty(String value) {
