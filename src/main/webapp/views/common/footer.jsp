@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <footer class="footer py-4">
     <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
         <div>Course Management</div>

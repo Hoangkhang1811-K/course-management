@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("loggedInUser", user);
-            session.setAttribute("successMsg", "Đặng nhập thành công! Welcome" + user.getFullName());
+            session.setAttribute("successMsg", "Đặng nhập thành công! Welcome " + user.getFullName());
 
             if (user.getRoleId() == 1) {
                 response.sendRedirect(request.getContextPath() + "/admin/dashboard");
