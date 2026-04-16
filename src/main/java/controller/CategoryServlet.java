@@ -14,8 +14,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "CategoryServle", urlPatterns = "/admin/categories")
-public class CategoryServle extends HttpServlet {
+@WebServlet(name = "CategoryServlet", urlPatterns = "/admin/categories")
+public class CategoryServlet extends HttpServlet {
     private static final int ADMIN_ROLE_ID = 1;
     private static final int ACTIVE_STATUS = 1;
     private static final int INACTIVE_STATUS = 0;
