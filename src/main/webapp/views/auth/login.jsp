@@ -23,6 +23,7 @@
 
                     <%
                         String error = (String) request.getAttribute("error");
+                        String successMsg = (String) session.getAttribute("successMsg");
                         String email = (String) request.getAttribute("email");
                         if (email == null) {
                             email = "";
@@ -34,6 +35,15 @@
                         <%= error %>
                     </div>
                     <% } %>
+
+                    <% if (successMsg != null) { %>
+                    <div class="alert alert-success" role="alert">
+                        <%= successMsg %>
+                    </div>
+                    <%
+                            session.removeAttribute("successMsg");
+                        }
+                    %>
 
                     <form action="<%= request.getContextPath() %>/login" method="post">
                         <div class="mb-3">

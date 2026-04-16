@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
         <a class="navbar-brand fw-bold text-dark" href="${pageContext.request.contextPath}/home">Course Management</a>
@@ -23,9 +24,17 @@
                                href="${pageContext.request.contextPath}/my-courses">Khóa học của tôi</a>
                         </li>
                         <c:if test="${sessionScope.loggedInUser.roleId == 1}">
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                   href="${pageContext.request.contextPath}/admin/dashboard">Quản trị</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle ${activePage == 'admin-dashboard' || activePage == 'admin-categories' || activePage == 'admin-courses' || activePage == 'admin-lessons' || activePage == 'admin-enrollments' ? 'active' : ''}"
+                                   href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Quản trị
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/dashboard">Tổng quan</a></li>
+                                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/categories">Danh mục</a></li>
+                                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/courses">Khóa học</a></li>
+                                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/enrollments">Đăng ký học</a></li>
+                                </ul>
                             </li>
                         </c:if>
                         <li class="nav-item">
