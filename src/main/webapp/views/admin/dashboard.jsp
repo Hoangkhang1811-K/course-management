@@ -14,15 +14,17 @@
         <div class="container">
             <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3">
                 <div>
-                    <span class="section-kicker">Quản trị hệ thống</span>
+                    <%--                    <span class="section-kicker">Quản trị hệ thống</span>--%>
                     <h1 class="mb-2">Tổng quan quản lý khóa học</h1>
                     <p class="text-secondary mb-0">
                         Theo dõi khóa học, danh mục, học viên và các hoạt động mới nhất trong hệ thống.
                     </p>
                 </div>
                 <div class="d-grid d-sm-flex gap-2">
-                    <a class="btn btn-primary" href="${pageContext.request.contextPath}/admin/courses?action=create">Thêm khóa học</a>
-                    <a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/admin/categories?action=create">Thêm danh mục</a>
+                    <a class="btn btn-primary" href="${pageContext.request.contextPath}/admin/courses?action=create">Thêm
+                        khóa học</a>
+                    <a class="btn btn-outline-primary"
+                       href="${pageContext.request.contextPath}/admin/categories?action=create">Thêm danh mục</a>
                 </div>
             </div>
         </div>
@@ -36,29 +38,46 @@
                 <div class="col-12 col-sm-6 col-xl-3">
                     <article class="stat-card">
                         <span class="stat-label">Tổng khóa học</span>
-                        <strong><c:out value="${totalCourses}"/></strong>
-                        <small><c:out value="${activeCourses}"/> khóa học đang mở</small>
+                        <%--                        <strong><c:out value="${totalCourses}"/></strong>--%>
+                        <%--                        <small><c:out value="${activeCourses}"/> khóa học đang mở</small>--%>
+                        <h2 class="display-6 fw-bold mb-1">${totalCourses}</h2>
+                        <p class="mb-0 text-secondary">
+                            Đang hoạt động: <strong>${activeCourses}</strong>
+                        </p>
                     </article>
                 </div>
                 <div class="col-12 col-sm-6 col-xl-3">
                     <article class="stat-card">
                         <span class="stat-label">Danh mục</span>
-                        <strong><c:out value="${totalCategories}"/></strong>
-                        <small><c:out value="${activeCategories}"/> danh mục hoạt động</small>
+                        <%--                        <strong><c:out value="${totalCategories}"/></strong>--%>
+                        <%--                        <small><c:out value="${activeCategories}"/> danh mục hoạt động</small>--%>
+                        <h2 class="display-6 fw-bold mb-1">${totalCategories}</h2>
+                        <p class="mb-0 text-secondary">
+                            Đang hoạt động: <strong>${activeCategories}</strong>
+                        </p>
                     </article>
                 </div>
                 <div class="col-12 col-sm-6 col-xl-3">
                     <article class="stat-card">
                         <span class="stat-label">Người dùng</span>
-                        <strong><c:out value="${totalUsers}"/></strong>
-                        <small>Tất cả tài khoản trong hệ thống</small>
+                        <%--                        <strong><c:out value="${totalUsers}"/></strong>--%>
+                        <%--                        <small>Tất cả tài khoản trong hệ thống</small>--%>
+                        <%--                        <p class="text-secondary mb-2">Tổng người dùng</p>--%>
+                        <h2 class="display-6 fw-bold mb-1">${totalUsers}</h2>
+                        <p class="mb-0 text-secondary">
+                            Học viên: <strong>${totalStudents}</strong>
+                        </p>
                     </article>
                 </div>
                 <div class="col-12 col-sm-6 col-xl-3">
                     <article class="stat-card">
-                        <span class="stat-label">Học viên</span>
-                        <strong><c:out value="${totalStudents}"/></strong>
-                        <small>Tài khoản có vai trò học viên</small>
+                        <span class="stat-label">Tổng học viên</span>
+<%--                        <strong><c:out value="${totalStudents}"/></strong>--%>
+<%--                        <small>Tài khoản có vai trò học viên</small>--%>
+                        <h2 class="display-6 fw-bold mb-1">${totalUsers}</h2>
+                        <p class="mb-0 text-secondary">
+                            Học viên: <strong>${totalStudents}</strong>
+                        </p>
                     </article>
                 </div>
             </div>
@@ -71,7 +90,8 @@
                                 <h2 class="h4 mb-1">Khóa học mới nhất</h2>
                                 <p class="text-secondary mb-0">Các khóa học vừa được cập nhật trong hệ thống.</p>
                             </div>
-                            <a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/admin/courses">Quản lý khóa học</a>
+                            <a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/admin/courses">Quản
+                                lý khóa học</a>
                         </div>
 
                         <c:choose>
@@ -99,7 +119,8 @@
                                                         Mã khóa học: <c:out value="${course.courseId}"/>
                                                     </div>
                                                 </td>
-                                                <td><c:out value="${empty course.level ? 'Đang cập nhật' : course.level}"/></td>
+                                                <td><c:out
+                                                        value="${empty course.level ? 'Đang cập nhật' : course.level}"/></td>
                                                 <td><fmt:formatNumber value="${course.price}" type="number"/> đ</td>
                                                 <td>
                                                     <span class="status-badge ${course.status == 1 ? 'is-active' : 'is-inactive'}">
@@ -132,7 +153,8 @@
                                 <h2 class="h4 mb-1">Học viên mới</h2>
                                 <p class="text-secondary mb-0">Danh sách tài khoản học viên gần đây.</p>
                             </div>
-                            <a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/admin/enrollments">Đăng ký học</a>
+                            <a class="btn btn-outline-primary"
+                               href="${pageContext.request.contextPath}/admin/enrollments">Đăng ký học</a>
                         </div>
 
                         <c:choose>
@@ -146,12 +168,17 @@
                                             <div class="student-avatar">
                                                 <c:choose>
                                                     <c:when test="${empty student.fullName}">?</c:when>
-                                                    <c:otherwise><c:out value="${fn:substring(student.fullName, 0, 1)}"/></c:otherwise>
+                                                    <c:otherwise><c:out
+                                                            value="${fn:substring(student.fullName, 0, 1)}"/></c:otherwise>
                                                 </c:choose>
                                             </div>
-                                            <div class="flex-grow-1">
-                                                <strong><c:out value="${student.fullName}"/></strong>
-                                                <div class="text-secondary small"><c:out value="${student.email}"/></div>
+                                            <div class="student-info">
+                                                <strong class="student-name">
+                                                    <c:out value="${student.fullName}"/>
+                                                </strong>
+                                                <div class="student-email">
+                                                    <c:out value="${student.email}"/>
+                                                </div>
                                             </div>
                                             <span class="status-badge ${student.status == 1 ? 'is-active' : 'is-inactive'}">
                                                 <c:choose>
