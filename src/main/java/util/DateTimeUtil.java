@@ -80,5 +80,4 @@ public class DateTimeUtil {
     public static boolean isValidFormDateTime(String dateTimeStr) {
         return parseFormDateTimeToTimestamp(dateTimeStr) != null;
     }
-
 }
