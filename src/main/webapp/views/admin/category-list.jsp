@@ -15,40 +15,39 @@
 <%@ include file="/views/common/header.jsp" %>
 <%@ include file="/views/common/navbar.jsp" %>
 
-<main class="py-4 py-lg-5 bg-light min-vh-100">
-    <section class="mb-4">
+<main class="category-list-page bg-light">
+    <section class="page-heading">
         <div class="container">
             <div class="row g-3 align-items-center justify-content-between">
                 <div class="col-lg-8">
-                    <h1 class="display-6 fw-bold mb-2">Danh sách danh mục</h1>
+                    <h1 class="mb-2">Danh sách danh mục</h1>
                     <p class="text-secondary mb-0">
-                        Quản lý các danh mục khóa học trong hệ thống, theo dõi trạng thái hoạt động và cập nhật nhanh
-                        khi cần.
+                        Quản lý các danh mục khóa học trong hệ thống, theo dõi trạng thái hoạt động và cập nhật nhanh khi cần.
                     </p>
                 </div>
-                <div class="col-lg-auto">
-                    <a class="btn btn-primary px-4"
-                       href="${pageContext.request.contextPath}/admin/categories?action=create">
-                        + Thêm danh mục
-                    </a>
-                </div>
+<%--                <div class="col-lg-auto">--%>
+<%--                    <a class="btn btn-primary px-4"--%>
+<%--                       href="${pageContext.request.contextPath}/admin/categories?action=create">--%>
+<%--                        + Thêm danh mục--%>
+<%--                    </a>--%>
+<%--                </div>--%>
             </div>
         </div>
     </section>
 
     <%@ include file="/views/common/message.jsp" %>
 
-    <section>
+    <section class="pb-5">
         <div class="container">
-            <div class="card-border-0 shadow-sm rounded-4 mb-4">
+            <div class="list-toolbar card border-0 shadow-sm rounded-4 mb-4">
                 <div class="card-body p-4">
                     <div class="row g-3 align-items-center justify-content-between">
                         <div class="col-md">
-                            <h2 class="h4 mb-1">Danh mục khoá học trong hệ thống</h2>
+                            <h2 class="h4 mb-1">Quản lý nhanh</h2>
                             <p class="text-secondary mb-0">
-                                Tổng cộng
+                                Hiện có tổng cộng
                                 <strong><c:out value="${empty categories ? 0 : fn:length(categories)}"/></strong>
-                                danh mục.
+                                danh mục trong hệ thống.
                             </p>
                         </div>
                         <div class="col-md-auto d-flex gap-2">
@@ -67,7 +66,7 @@
 
             <c:choose>
                 <c:when test="${empty categories}">
-                    <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card border-0 shadow-sm rounded-4 empty-panel">
                         <div class="card-body text-center py-5">
                             <h2 class="h4 mb-2">Chưa có danh mục nào</h2>
                             <p class="text-secondary mb-4">
@@ -84,8 +83,8 @@
                 <c:otherwise>
                     <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
                         <div class="table-responsive">
-                            <table class="table table-hover align-middle mb-0">
-                                <thead class="table-light">
+                            <table class="table table-hover align-middle mb-0 category-table">
+                                <thead>
                                 <tr>
                                     <th class="ps-4">Mã</th>
                                     <th>Tên danh mục</th>
@@ -102,7 +101,7 @@
                                         </td>
 
                                         <td>
-                                            <div class="fw-semibold">
+                                            <div class="fw-semibold category-name">
                                                 <c:out value="${category.name}"/>
                                             </div>
                                         </td>
@@ -110,7 +109,7 @@
                                         <td>
                                             <c:choose>
                                                 <c:when test="${not empty category.description}">
-                                                    <span class="text-secondary">
+                                                    <span class="text-secondary category-description">
                                                         <c:out value="${category.description}"/>
                                                     </span>
                                                 </c:when>
@@ -123,14 +122,10 @@
                                         <td>
                                             <c:choose>
                                                 <c:when test="${category.status == 1}">
-                                                    <span class="badge rounded-pill text-bg-success">
-                                                        Đang hoạt động
-                                                    </span>
+                                                    <span class="status-badge is-active">Đang hoạt động</span>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <span class="badge rounded-pill text-bg-secondary">
-                                                        Tạm khóa
-                                                    </span>
+                                                    <span class="status-badge is-inactive">Tạm khóa</span>
                                                 </c:otherwise>
                                             </c:choose>
                                         </td>
