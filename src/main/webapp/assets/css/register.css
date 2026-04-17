@@ -1,0 +1,132 @@
+body {
+    background: #f6f7fb;
+    color: #1f2937;
+}
+
+.navbar {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.register-hero {
+    background:
+            linear-gradient(90deg, rgba(17, 24, 39, 0.84), rgba(17, 24, 39, 0.46)),
+            url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80") center/cover;
+    color: #ffffff;
+}
+
+.hero-content {
+    max-width: 760px;
+}
+
+.hero-kicker {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.14);
+    color: #d1fae5;
+    font-weight: 700;
+}
+
+.register-hero h1 {
+    font-size: 3rem;
+    line-height: 1.15;
+    font-weight: 700;
+}
+
+.register-hero .lead {
+    color: #e5e7eb;
+}
+
+.register-panel,
+.info-panel {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+.section-title {
+    font-weight: 700;
+    color: #111827;
+}
+
+.benefit-list {
+    padding-left: 20px;
+    margin-bottom: 0;
+    color: #4b5563;
+}
+
+.benefit-list li {
+    margin-bottom: 12px;
+}
+
+.support-box {
+    padding: 16px;
+    border-radius: 8px;
+    background: #ecfdf5;
+    color: #047857;
+}
+
+.support-box a {
+    color: #0f766e;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.support-box a:hover {
+    text-decoration: underline;
+}
+
+.form-control,
+.form-check-input {
+    border-radius: 8px;
+}
+
+.form-control {
+    min-height: 46px;
+}
+
+.form-control:focus,
+.form-check-input:focus {
+    border-color: #0f766e;
+    box-shadow: 0 0 0 0.2rem rgba(15, 118, 110, 0.16);
+}
+
+.form-check-input:checked {
+    background-color: #0f766e;
+    border-color: #0f766e;
+}
+
+.btn-primary {
+    background: #0f766e;
+    border-color: #0f766e;
+    border-radius: 8px;
+}
+
+.btn-primary:hover {
+    background: #115e59;
+    border-color: #115e59;
+}
+
+.btn-outline-primary {
+    color: #0f766e;
+    border-color: #0f766e;
+    border-radius: 8px;
+}
+
+.btn-outline-primary:hover {
+    background: #0f766e;
+    border-color: #0f766e;
+}
+
+.footer {
+    background: #111827;
+    color: #d1d5db;
+}
+
+@media (max-width: 767.98px) {
+    .register-hero h1 {
+        font-size: 2.2rem;
+    }
+}

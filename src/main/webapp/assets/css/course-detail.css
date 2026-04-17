@@ -1,0 +1,243 @@
+body {
+    background: #f6f7fb;
+    color: #1f2937;
+}
+
+.navbar {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.detail-hero {
+    background:
+            linear-gradient(90deg, rgba(17, 24, 39, 0.88), rgba(17, 24, 39, 0.58)),
+            url("https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1600&q=80") center/cover;
+    color: #ffffff;
+}
+
+.back-link {
+    color: #d1fae5;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: #ffffff;
+}
+
+.detail-title {
+    font-size: 3rem;
+    line-height: 1.15;
+    font-weight: 700;
+}
+
+.detail-summary {
+    color: #e5e7eb;
+    max-width: 720px;
+}
+
+.meta-pill {
+    min-width: 132px;
+    padding: 14px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.meta-pill strong,
+.meta-pill span {
+    display: block;
+}
+
+.meta-pill span {
+    color: #d1d5db;
+    font-size: 0.92rem;
+}
+
+.cover-box,
+.content-panel,
+.enroll-panel,
+.related-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+.cover-box {
+    overflow: hidden;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
+}
+
+.course-cover,
+.course-cover-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    display: block;
+}
+
+.course-cover {
+    object-fit: cover;
+}
+
+.course-cover-placeholder,
+.related-cover-placeholder {
+    background:
+            linear-gradient(135deg, rgba(15, 118, 110, 0.82), rgba(37, 99, 235, 0.72)),
+            url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80") center/cover;
+}
+
+.section-title {
+    font-weight: 700;
+    color: #111827;
+}
+
+.detail-text {
+    color: #4b5563;
+    line-height: 1.75;
+    white-space: pre-line;
+}
+
+.badge-level {
+    background: #e0f2fe;
+    color: #075985;
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+.lesson-count {
+    align-self: flex-start;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: #ecfdf5;
+    color: #047857;
+    font-weight: 700;
+}
+
+.lesson-list {
+    display: grid;
+    gap: 12px;
+}
+
+.lesson-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+.lesson-order {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: #0f766e;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex: 0 0 auto;
+}
+
+.enroll-panel {
+    position: sticky;
+    top: 92px;
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.course-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.course-info-list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.course-info-list li:last-child {
+    border-bottom: 0;
+}
+
+.course-info-list span {
+    color: #6b7280;
+}
+
+.related-section {
+    background: #ffffff;
+}
+
+.related-card {
+    height: 100%;
+    overflow: hidden;
+}
+
+.related-card img,
+.related-cover-placeholder {
+    width: 100%;
+    height: 150px;
+    display: block;
+}
+
+.related-card img {
+    object-fit: cover;
+}
+
+.related-title {
+    min-height: 44px;
+    color: #111827;
+    font-weight: 700;
+}
+
+.btn-primary {
+    background: #0f766e;
+    border-color: #0f766e;
+    border-radius: 8px;
+}
+
+.btn-primary:hover {
+    background: #115e59;
+    border-color: #115e59;
+}
+
+.btn-outline-primary {
+    color: #0f766e;
+    border-color: #0f766e;
+    border-radius: 8px;
+}
+
+.btn-outline-primary:hover {
+    background: #0f766e;
+    border-color: #0f766e;
+}
+
+.footer {
+    background: #111827;
+    color: #d1d5db;
+}
+
+@media (max-width: 991.98px) {
+    .enroll-panel {
+        position: static;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .detail-title {
+        font-size: 2.2rem;
+    }
+
+    .lesson-item {
+        align-items: flex-start;
+    }
+}

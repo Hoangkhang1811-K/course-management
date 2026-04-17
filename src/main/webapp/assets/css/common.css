@@ -1,0 +1,41 @@
+body {
+    min-height: 100vh;
+    background: #f6f7fb;
+    color: #172033;
+}
+
+.navbar {
+    background: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid #e6e9f0;
+    box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+}
+
+.navbar .nav-link {
+    color: #4a5568;
+    font-weight: 500;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: #0d6efd;
+}
+
+.dropdown-menu {
+    border: 1px solid #e6e9f0;
+    border-radius: 8px;
+    box-shadow: 0 14px 32px rgba(23, 32, 51, 0.12);
+}
+
+.btn,
+.form-control,
+.form-select,
+.alert {
+    border-radius: 8px;
+}
+
+.footer {
+    margin-top: auto;
+    background: #ffffff;
+    border-top: 1px solid #e6e9f0;
+    color: #5f6b7a;
+}
