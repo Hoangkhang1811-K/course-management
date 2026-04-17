@@ -1,0 +1,150 @@
+.dashboard-page .dashboard-heading {
+    padding: 56px 0 24px;
+    background: #ffffff;
+    border-bottom: 1px solid #e6e9f0;
+}
+
+.dashboard-page h1 {
+    color: #172033;
+    font-weight: 700;
+}
+
+.section-kicker {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: #0d6efd;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.stat-card,
+.dashboard-panel,
+.quick-panel {
+    background: #ffffff;
+    border: 1px solid #e6e9f0;
+    border-radius: 8px;
+    box-shadow: 0 12px 32px rgba(23, 32, 51, 0.08);
+}
+
+.stat-card {
+    display: grid;
+    gap: 8px;
+    min-height: 150px;
+    padding: 24px;
+}
+
+.stat-card strong {
+    color: #172033;
+    font-size: 2.4rem;
+    line-height: 1;
+}
+
+.stat-label {
+    color: #0d6efd;
+    font-weight: 700;
+}
+
+.stat-card small {
+    color: #5f6b7a;
+}
+
+.dashboard-panel,
+.quick-panel {
+    padding: 24px;
+}
+
+.panel-header {
+    margin-bottom: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #e6e9f0;
+}
+
+.table thead th {
+    color: #5f6b7a;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.status-badge.is-active {
+    background: #e8f7ef;
+    color: #147a3d;
+}
+
+.status-badge.is-inactive {
+    background: #fff1e8;
+    color: #a34712;
+}
+
+.student-list {
+    display: grid;
+    gap: 14px;
+}
+
+.student-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid #edf0f5;
+    border-radius: 8px;
+}
+
+.student-avatar {
+    display: grid;
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    background: #e9f2ff;
+    color: #0d6efd;
+    border-radius: 8px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.quick-links {
+    display: grid;
+    gap: 10px;
+}
+
+.quick-links a {
+    display: block;
+    padding: 12px 14px;
+    color: #172033;
+    text-decoration: none;
+    border: 1px solid #e6e9f0;
+    border-radius: 8px;
+}
+
+.quick-links a:hover {
+    color: #0d6efd;
+    border-color: #0d6efd;
+    background: #f7fbff;
+}
+
+.empty-state {
+    padding: 28px;
+    color: #5f6b7a;
+    text-align: center;
+    background: #f8fafc;
+    border-radius: 8px;
+}
+
+@media (max-width: 575.98px) {
+    .stat-card,
+    .dashboard-panel,
+    .quick-panel {
+        padding: 20px;
+    }
+}
