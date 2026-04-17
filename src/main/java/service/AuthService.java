@@ -2,6 +2,7 @@ package service;
 
 import dao.UserDAO;
 import model.User;
+import util.PasswordUtil;
 
 public class AuthService {
     private final UserDAO userDAO = new UserDAO();
@@ -18,7 +19,7 @@ public class AuthService {
             return null;
         }
 
-        if (!user.getPasswordHash().equals(password)) {
+        if (!PasswordUtil.checkPassword(password, user.getPasswordHash())) {
             return null;
         }
 
@@ -32,6 +33,8 @@ public class AuthService {
         if (existingUser != null) {
             return false;
         }
+
+        user.setPasswordHash(PasswordUtil.hashPassword(user.getPasswordHash()));
         return userDAO.insertUser(user);
     }
 
