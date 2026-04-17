@@ -2,6 +2,7 @@ package controller;
 
 import model.User;
 import service.AuthService;
+import util.SessionUtil;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "LoginServlet", urlPatterns = "/login")
@@ -27,8 +27,7 @@ public class LoginServlet extends HttpServlet {
         String action = request.getParameter("action");
 
         if ("logout".equals(action)) {
-            HttpSession session = request.getSession();
-            session.invalidate();
+            SessionUtil.invalidateSession(request);
             response.sendRedirect(request.getContextPath() + "/login");
             return;
         }
@@ -48,9 +47,8 @@ public class LoginServlet extends HttpServlet {
         User user = authService.login(email, password);
 
         if (user != null) {
-            HttpSession session = request.getSession();
-            session.setAttribute("loggedInUser", user);
-            session.setAttribute("successMsg", "Đặng nhập thành công! Welcome " + user.getFullName());
+            SessionUtil.setLoggedInUser(request, user);
+            SessionUtil.setSuccessMessage(request, "Dang nhap thanh cong! Welcome " + user.getFullName());
 
             if (user.getRoleId() == 1) {
                 response.sendRedirect(request.getContextPath() + "/admin/dashboard");
