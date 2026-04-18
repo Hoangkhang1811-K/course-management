@@ -199,6 +199,7 @@
                             <a href="${pageContext.request.contextPath}/admin/categories">Quản lý danh mục</a>
                             <a href="${pageContext.request.contextPath}/admin/courses">Quản lý khóa học</a>
                             <a href="${pageContext.request.contextPath}/admin/enrollments">Quản lý đăng ký học</a>
+                            <a href="${pageContext.request.contextPath}/admin/users">Quản lý người dùng</a>
                             <a href="${pageContext.request.contextPath}/courses">Xem trang khóa học</a>
                         </div>
                     </section>

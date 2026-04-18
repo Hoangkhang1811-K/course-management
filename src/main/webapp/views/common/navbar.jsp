@@ -25,7 +25,7 @@
                         </li>
                         <c:if test="${sessionScope.loggedInUser.roleId == 1}">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle ${activePage == 'admin-dashboard' || activePage == 'admin-categories' || activePage == 'admin-courses' || activePage == 'admin-lessons' || activePage == 'admin-enrollments' ? 'active' : ''}"
+                                <a class="nav-link dropdown-toggle ${activePage == 'admin-dashboard' || activePage == 'admin-categories' || activePage == 'admin-courses' || activePage == 'admin-lessons' || activePage == 'admin-enrollments' || activePage == 'admin-users' ? 'active' : ''}"
                                    href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Quản trị
                                 </a>
@@ -34,6 +34,7 @@
                                     <li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/categories">Danh mục</a></li>
                                     <li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/courses">Khóa học</a></li>
                                     <li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/enrollments">Đăng ký học</a></li>
+                                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/admin/users">Người dùng</a></li>
                                 </ul>
                             </li>
                         </c:if>
