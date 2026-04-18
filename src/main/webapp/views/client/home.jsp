@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:set var="pageTitle" value="Trang chủ - Course Management"/>
 <c:set var="pageCss" value="/assets/css/home.css"/>
@@ -72,7 +73,20 @@
                                 <article class="course-card">
                                     <c:choose>
                                         <c:when test="${not empty course.thumbnailUrl}">
-                                            <img src="${course.thumbnailUrl}" alt="${course.title}">
+                                            <c:choose>
+                                                <c:when test="${fn:startsWith(course.thumbnailUrl, 'http://') || fn:startsWith(course.thumbnailUrl, 'https://') || fn:startsWith(course.thumbnailUrl, 'data:')}">
+                                                    <c:set var="courseImageSrc" value="${course.thumbnailUrl}"/>
+                                                </c:when>
+                                                <c:when test="${fn:startsWith(course.thumbnailUrl, '/')}">
+                                                    <c:set var="courseImageSrc" value="${pageContext.request.contextPath}${course.thumbnailUrl}"/>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <c:set var="courseImageSrc" value="${pageContext.request.contextPath}/${course.thumbnailUrl}"/>
+                                                </c:otherwise>
+                                            </c:choose>
+                                            <img src="${fn:escapeXml(courseImageSrc)}"
+                                                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80';"
+                                                 alt="${fn:escapeXml(course.title)}">
                                         </c:when>
                                         <c:otherwise>
                                             <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"

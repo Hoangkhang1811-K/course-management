@@ -284,7 +284,11 @@ public class CourseManageServlet extends HttpServlet {
             return "Trình độ không được vượt quá 50 ký tự.";
         }
 
-        if (course.getThumbnailUrl() != null && course.getThumbnailUrl().length() > 500) {
+        if (course.getThumbnailUrl() == null || course.getThumbnailUrl().trim().isEmpty()) {
+            return "Vui lòng nhập ảnh minh họa cho khóa học.";
+        }
+
+        if (course.getThumbnailUrl().length() > 500) {
             return "Đường dẫn ảnh không được vượt quá 500 ký tự.";
         }
 

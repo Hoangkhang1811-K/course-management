@@ -92,7 +92,20 @@
                                 <article class="course-card">
                                     <c:choose>
                                         <c:when test="${not empty course.thumbnailUrl}">
-                                            <img src="${fn:escapeXml(course.thumbnailUrl)}" alt="${fn:escapeXml(course.title)}">
+                                            <c:choose>
+                                                <c:when test="${fn:startsWith(course.thumbnailUrl, 'http://') || fn:startsWith(course.thumbnailUrl, 'https://') || fn:startsWith(course.thumbnailUrl, 'data:')}">
+                                                    <c:set var="courseImageSrc" value="${course.thumbnailUrl}"/>
+                                                </c:when>
+                                                <c:when test="${fn:startsWith(course.thumbnailUrl, '/')}">
+                                                    <c:set var="courseImageSrc" value="${pageContext.request.contextPath}${course.thumbnailUrl}"/>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <c:set var="courseImageSrc" value="${pageContext.request.contextPath}/${course.thumbnailUrl}"/>
+                                                </c:otherwise>
+                                            </c:choose>
+                                            <img src="${fn:escapeXml(courseImageSrc)}"
+                                                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80';"
+                                                 alt="${fn:escapeXml(course.title)}">
                                         </c:when>
                                         <c:otherwise>
                                             <div class="course-cover-placeholder" role="img" aria-label="Khóa học trực tuyến"></div>

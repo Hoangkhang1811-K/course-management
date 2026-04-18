@@ -65,7 +65,19 @@
                             <div class="cover-box">
                                 <c:choose>
                                     <c:when test="${not empty course.thumbnailUrl}">
-                                        <img class="course-cover" src="${fn:escapeXml(course.thumbnailUrl)}"
+                                        <c:choose>
+                                            <c:when test="${fn:startsWith(course.thumbnailUrl, 'http://') || fn:startsWith(course.thumbnailUrl, 'https://') || fn:startsWith(course.thumbnailUrl, 'data:')}">
+                                                <c:set var="courseImageSrc" value="${course.thumbnailUrl}"/>
+                                            </c:when>
+                                            <c:when test="${fn:startsWith(course.thumbnailUrl, '/')}">
+                                                <c:set var="courseImageSrc" value="${pageContext.request.contextPath}${course.thumbnailUrl}"/>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <c:set var="courseImageSrc" value="${pageContext.request.contextPath}/${course.thumbnailUrl}"/>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        <img class="course-cover" src="${fn:escapeXml(courseImageSrc)}"
+                                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80';"
                                              alt="${fn:escapeXml(course.title)}">
                                     </c:when>
                                     <c:otherwise>
@@ -208,7 +220,19 @@
                                     <article class="related-card">
                                         <c:choose>
                                             <c:when test="${not empty relatedCourse.thumbnailUrl}">
-                                                <img src="${fn:escapeXml(relatedCourse.thumbnailUrl)}"
+                                                <c:choose>
+                                                    <c:when test="${fn:startsWith(relatedCourse.thumbnailUrl, 'http://') || fn:startsWith(relatedCourse.thumbnailUrl, 'https://') || fn:startsWith(relatedCourse.thumbnailUrl, 'data:')}">
+                                                        <c:set var="relatedCourseImageSrc" value="${relatedCourse.thumbnailUrl}"/>
+                                                    </c:when>
+                                                    <c:when test="${fn:startsWith(relatedCourse.thumbnailUrl, '/')}">
+                                                        <c:set var="relatedCourseImageSrc" value="${pageContext.request.contextPath}${relatedCourse.thumbnailUrl}"/>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <c:set var="relatedCourseImageSrc" value="${pageContext.request.contextPath}/${relatedCourse.thumbnailUrl}"/>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                                <img src="${fn:escapeXml(relatedCourseImageSrc)}"
+                                                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80';"
                                                      alt="${fn:escapeXml(relatedCourse.title)}">
                                             </c:when>
                                             <c:otherwise>
