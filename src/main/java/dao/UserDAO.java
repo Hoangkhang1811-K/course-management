@@ -16,6 +16,9 @@ public class UserDAO {
     private static final String INSERT_USER = "insert into users (role_id, full_name, email, password_hash, phone, status) values (?, ?, ?, ?, ?, ?)";
     private static final String SELECT_ALL_STUDENT = "select * from users where role_id = 2 ORDER BY user_id DESC";
     private static final String SELECT_ALL_USERS = "select * from users ORDER BY user_id DESC";
+    private static final String UPDATE_USER = "update users set role_id = ?, full_name = ?, email = ?, password_hash = ?, phone = ?, status = ? where user_id = ?";
+    private static final String UPDATE_STATUS = "update users set status = ? where user_id = ?";
+    private static final String DELETE_USER = "delete from users where user_id = ?";
 
     public User findByEmail(String email) {
         try (
@@ -106,6 +109,58 @@ public class UserDAO {
         }
 
         return userList;
+    }
+
+    public boolean updateUser(User user) {
+        try (
+                Connection conn = DBConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(UPDATE_USER)
+        ) {
+            ps.setInt(1, user.getRoleId());
+            ps.setString(2, user.getFullName());
+            ps.setString(3, user.getEmail());
+            ps.setString(4, user.getPasswordHash());
+            ps.setString(5, user.getPhone());
+            ps.setInt(6, user.getStatus());
+            ps.setInt(7, user.getUserId());
+
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public boolean updateStatus(int userId, int status) {
+        try (
+                Connection conn = DBConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(UPDATE_STATUS)
+        ) {
+            ps.setInt(1, status);
+            ps.setInt(2, userId);
+
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public boolean deleteUser(int userId) {
+        try (
+                Connection conn = DBConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(DELETE_USER)
+        ) {
+            ps.setInt(1, userId);
+
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 
     private User mapResultSetToUser(ResultSet rs) throws SQLException {
